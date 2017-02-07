@@ -1,0 +1,7 @@
+This program has to get a Linux executable path as argument, and it makes the executable usable system-wide. 
+This program does not copy other files that are required by the executable.
+It only makes the executable system-wide.
+
+I tested this program in Ubuntu 16.04 LTS  only. It should work in any other linux distro, because of it's simplicity.
+
+Source code: InstallSystemWide.cpp
