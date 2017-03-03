@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<head>
+	<script>
+		var orient='l';
+		var speed=0;
+		var r=70;
+		var mapx=500;
+		var mapy=500;
+		var x=mapx/2;
+		var y=mapy*0.75;
+		var ballx=mapx/2;
+		var bally=mapy/2;
+		var ballr=20;
+		var ballorient=135;
+		var ballorient2="fel";
+		var ballorient3;
+		var score=0;
+		var ballminus=0;
+		var keycodecustom;
+		var counter=0;
+		var LOL=1;
+		var counter2=LOL;
+		window.addEventListener('keydown', function(event) {
+			console.log(event.keyCode);
+			keycodecustom=event.keyCode;
+		}, false);
+		ballorient3=1;
+		alert("Nyomd meg az OK gombot a kezdéshez: ");
+		var loop = setInterval(DoIt,LOL);
+		function DoIt() {
+			if(score>2)
+				{
+					if(ballminus>2)
+					{
+					if(ballr>4)
+					{
+						ballr=ballr-1;
+					}
+					ballminus=0;
+					}
+					
+				}
+			switch(keycodecustom)
+			{
+				//wasd-87,65,83,68
+				
+				/*case 87: y=y-8; keycodecustom=0;
+					if(y<0+r)
+					{
+						y=0+r;
+					}
+					break;
+				*/
+				//stop script
+				case 65: x=x-8;	keycodecustom=0;
+					if(x<0+r)
+					{
+						x=0+r;
+					}
+					break;
+				//stop script vége
+				/*case 83: y=y+8;	keycodecustom=0;
+					if(y>mapy-r)
+					{
+						y=mapy-r;
+					}
+					break;
+				*/
+				case 83: clearInterval(loop);
+					break;
+				case 68: x=x+8;	keycodecustom=0;
+					if(x>mapx-r)
+					{
+						x=mapx-r;
+					}
+					break;
+			}
+				//game over check
+				if(bally+ballr>mapy)
+				{
+					clearInterval(loop);
+					alert("Vesztettél! Pontszámod: "+score+" Speed: "+LOL);
+				}
+				//game over check vége
+				//fel - le irányítás
+				if(ballorient2=="fel")
+				{
+					if(bally<0+ballr)
+					{
+						ballorient2="le";
+						bally=bally-1;
+					}
+					else
+					{
+						bally=bally-1;
+					}
+				}
+				if(ballorient2=="le")
+				{
+					if(bally>mapy-ballr)
+					{
+						ballorient2="fel";
+						bally=bally-1;
+					}
+					else
+					{
+						bally=bally+1;
+					}
+				}
+				//fel - le irányítás vége
+				//platfrom+ball ellenőrzés
+				if(bally+ballr==y)
+				{
+					if(ballx>x-r && ballx<x+r*2)
+					{
+						ballorient2="fel";
+						score=score+1;
+						ballminus=ballminus+1;
+						counter=counter+1;
+					}
+				}
+				//platfrom+ball ellenőrzés vége
+				//irány váltás: 1 jobb - 2 bal 
+				if(ballx<0+ballr)
+				{
+					ballorient3=1;
+				}
+				if(ballx>mapx-ballr)
+				{
+					ballorient3=2;
+				}
+				if(ballorient3==2)
+				{
+					ballx=ballx-1;
+				}
+				if(ballorient3==1)
+				{
+					ballx=ballx+1;
+				}
+				//irányváltás vége
+			var ball = canvas1.getContext('2d');
+			ball.beginPath();
+			ball.fillStyle="#0000ff";
+			ball.clearRect(0,0,mapx,mapy);
+			var circle = canvas1.getContext('2d');
+			circle.beginPath();
+			circle.fillStyle="#0000ff";
+			circle.clearRect(0,0,mapx,mapy);
+			//circle.arc(x, y, r, 0,Math.PI*2);
+			ball.arc(ballx,bally,ballr,0,2*Math.PI)
+			circle.rect(x-r,y,r*2,5);
+			circle.closePath();
+			circle.fill();
+			var text1 = canvas1.getContext('2d');
+			text1.font="30px Arial";
+			text1.fillStyle="blue";
+			text1.fillText("Ponszám: "+score,10,30);
+			var text2 = canvas1.getContext('2d');
+			text2.font="30px Arial";
+			text2.fillStyle="blue";
+			text2.fillText("Labda sugara: "+ballr,10,60);
+		}
+	</script>
+	<title>Joel meleg!</title>
+	<style type="text/css">
+		canvas { background-color: red;
+				opacity: 0.5;
+				}
+	</style>
+	<body>
+		<canvas id="canvas1" width="500px" height="500px">
+			
+		</canvas>
+	</body>
+</head>
