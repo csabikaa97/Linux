@@ -1,3 +1,5 @@
 This program loops the aircrack-ng -S command.
 
 Source code: AircrackSpeedTestLoop.cpp
+
+Architecture: x86
