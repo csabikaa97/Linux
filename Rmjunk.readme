@@ -1,3 +1,5 @@
 This program removes all csv and netxml files from the executed path.
 
 Source code: Rmjunk.cpp
+
+Architecture: x86
