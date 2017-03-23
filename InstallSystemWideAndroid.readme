@@ -2,4 +2,4 @@ This program takes an executable name or pat has a single argument, and installs
 
 Source: InstallSystemWideAndroid.cpp
 
-Architecture: x86, arm
+Architecture: x86, arm32

@@ -2,4 +2,4 @@ This program takes an APK as argument and installs it to an adb device.
 
 Source code: AdbInsallApk.cpp
 
-Architecture: x86
+Architecture: x86, x64, arm

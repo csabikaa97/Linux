@@ -2,4 +2,4 @@ This program restores ubuntu networking after airmon is stopped.
 
 Source code: AirmonRestore.cpp
 
-Architecture: x86
+Architecture: x86, x64, arm

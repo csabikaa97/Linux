@@ -6,4 +6,4 @@ I tested this program in Ubuntu 16.04 LTS  only. It should work in any other lin
 
 Source code: InstallSystemWide.cpp
 
-Architecture: x86, arm
+Architecture: x86, x64, arm
