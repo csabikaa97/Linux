@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    while(true)
+    for(int i=0; i<argc; i++)
 	{
 		system("aircrack-ng -S");
 	}
