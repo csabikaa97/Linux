@@ -1,0 +1,3 @@
+Linux apt install list:
+
+git aircrack-ng g++ gcc ncurses-dev nano android-tools-adb lm-sensors gparted
