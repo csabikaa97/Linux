@@ -1,5 +1,0 @@
-This program loops the lm-sensors sensors command, and executing it every second.
-
-Source code: sensorloop.cpp
-
-Architecture: x86, x64, arm
