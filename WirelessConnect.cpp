@@ -21,6 +21,9 @@ int main(int argc, char *argv[])
 		cout<<endl;
 		system("ifconfig | grep \"inet addr\"");
 		cout<<endl;
+		system("ping google.com -c 1");
+		cout<<endl;
+		cout<<endl;
 	}
 	else
 	{
