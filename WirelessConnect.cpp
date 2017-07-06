@@ -10,15 +10,17 @@ int main(int argc, char *argv[])
 	*/
 	if(argc == 3)
 	{
+		cout<<endl;
 		string interface=argv[1];
 		string configfile=argv[2];
 		string command1="sudo ifconfig "+interface+" up";
-		cout<<command1<<endl;
 		system(command1.c_str());
 		string command2="wpa_supplicant -D wext -B -i "+interface+" -c "+configfile;
-		cout<<command2<<endl;
 		system(command2.c_str());
 		system("dhclient");
+		cout<<endl;
+		system("ifconfig | grep \"inet addr\"");
+		cout<<endl;
 	}
 	else
 	{
