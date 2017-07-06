@@ -9,12 +9,13 @@ int main(int argc, char *argv[])
 		string file=argv[2];
 		cout<<"Variable: "<<variable<<endl;
 		cout<<"File: "<<file<<endl;
-		string command="export "+variable+"=\"$(more "+file+")\"";
+		string command="export "<<variable<<"=\"$(more "<<file<<")\"";
 		cout<<"Command: "<<command<<endl;
-		system("ls");
+		system(command.c_str());
+		cout<<"Exported to "
 	}
 	else
 	{
-		cout<<"TERMED"<<endl;
+		cout<<"Too few arguemnts."<<endl;
 	}
 }
