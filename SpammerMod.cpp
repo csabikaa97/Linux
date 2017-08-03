@@ -2,17 +2,16 @@
 #include <cstdlib>
 #include <sstream>
 #include <time.h>
-#include <stdlib>
+#include <cstdlib>
 using namespace std;
 int main(int argc, char* argv[])
 {
 	string basecommand="airbase-ng -c ";
 	string basemac="00:00:00:69:69:";
+	srand(time(0));
 	while(true)
 	for(int i=0; i<11; i++)
 	{
-		srand(time(0));
-
 		//CHANNEL DECLARATION
 		int numbertemp=i+1;
 		stringstream number;
@@ -33,7 +32,11 @@ int main(int argc, char* argv[])
 		stringstream buffer;
 		buffer<<bignumber;
 		essid=buffer.str();
-		
+
+		//RUNNING THE SCRIPT
+		string command="airbase-ng -c "+channel+" -e "+essid+" -a "+macaddress+" mon0";
+		//cout<<endl<<command<<endl;
+		system(command.c_str());
 	}
 	return 0;
 }
