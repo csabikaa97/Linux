@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	while(true)
 	for(int i=0; i<11; i++)
 	{
-		srand(teim(0));
+		srand(time(0));
 
 		//CHANNEL DECLARATION
 		int numbertemp=i+1;
@@ -28,11 +28,12 @@ int main(int argc, char* argv[])
 		string macaddress=basemac+macbuffer.str();
 
 		//ESSID GENERATION
-		switch(i)
-		{
-			case 0:	
-				break;
-			
+		string essid;
+		int bignumber=rand()%10000000;
+		stringstream buffer;
+		buffer<<bignumber;
+		essid=buffer.str();
+		
 	}
 	return 0;
 }
