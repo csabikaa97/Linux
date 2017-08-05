@@ -1,0 +1,6 @@
+The progra takes two arguments then it will open the first argument as a file and export it to an integer to the shell
+with the name described in the second argument.
+
+Architecture: x86, x64, arm
+
+Source code: ExportfromFile.cpp

@@ -1,0 +1,20 @@
+Wireless station beacon spammer program that uses aircrack-ng and SleepnRun executables. It is a bit like mdk3.
+
+Architecture: x64
+
+Source code: Spammer.cpp
+
+Arguments:
+	s		-	Enable WPA2 psk security
+	b <mac>		-	Enable custom MAC for all networks
+	e <essid>	-	Enable custom ESSID for all networks
+	c <number>	-	Broadcast networks on one channel
+
+	(If different arguments are not
+	present, values will be generated 
+	randomly for every integer possible.)	
+
+Requirements:
+	-"airbase-ng"
+	-"SleepnRun-x64" or "SleepnRun" and corresponding SpammerModReal executable ( x86 or x64 )
+

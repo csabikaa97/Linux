@@ -1,0 +1,6 @@
+The program takes two arguments and then runs the first argument as a command in the shell <second argument> seconds after
+SleepnRun is runned.
+
+Architecture: x86, x64, arm
+
+Source code: SleepnRun.cpp

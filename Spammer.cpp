@@ -1,51 +1,116 @@
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
+#include <fstream>
 #include <sstream>
+#include <string>
+#include <unistd.h>
 using namespace std;
-int main()
+int main(int argc, char* argv[])
 {
-	string basecommand="airbase-ng -c ";
-	string basemac="00:00:00:69:69:6";
-	while(true)
-	for(int i=0; i<10; i++)
+	string BaseBssid="00:0C:87:69:69:";
+
+	cout<<"Argc: "<<argc<<endl;
+	bool FixChannel=false;
+	string Channel;
+	bool FixEssid=false;
+	string Essid;
+	bool FixBssid=false;
+	string Bssid;
+	bool FixTimes=false;
+	string TimesS;
+	int Times=10;
+	char CharBuffer;
+	bool Security=false;
+	string buffer;
+	for(int i=0; i<argc; i++)
 	{
-		string secondary;
-		switch(i)
+		buffer=argv[i];
+		CharBuffer=buffer[0];
+		switch(CharBuffer)
 		{
-			case 0:	secondary="Gepipari1";
+			case 'c':
+				FixChannel=true;
+				Channel=argv[i+1];
+				cout<<"Channel: "<<Channel<<endl;
 				break;
-			case 1:	secondary="Gepipari2";
+			case 'e':
+				FixEssid=true;
+				Essid=argv[i+1];
+				cout<<"Essid: "<<Essid<<endl;
 				break;
-			case 2:	secondary="Gepipari3";
+			case 'b':
+				FixBssid=true;
+				Bssid=argv[i+1];
+				cout<<"Bssid: "<<Bssid<<endl;
 				break;
-			case 3:	secondary="Gepipari4";
+			case 't':
+				FixTimes=true;
+				TimesS=argv[i+1];
+				Times=atoi(TimesS.c_str());
+				cout<<"Times: "<<Times<<endl;
 				break;
-			case 4:	secondary="Gepipari5";
-				break;
-			case 5:	secondary="Gepipari0";
-				break;
-			case 6:	secondary="Gepipari6";
-				break;
-			case 7:	secondary="Gepipari7";
-				break;
-			case 8:	secondary="Gepipari8";
-				break;
-			case 9:	secondary="Gepipari9";
+			case 's':
+				Security=true;
 				break;
 		}
-		stringstream buffer2;
-		buffer2<<i;
-		string szam2=buffer2.str();
-		int temp=i+1;
-		string szam;
-		stringstream buffer;
-		buffer.str("");
-		buffer<<temp;
-		szam=buffer.str();
-		string modmac=basemac+szam2;
-		string final=basecommand+szam+" -e \""+secondary+"\" -a "+modmac+" mon0";
-		system(final.c_str());
-		cout<<endl<<final<<endl;
 	}
+	cout<<endl<<"Argument initialization done!"<<endl;
+	string BaseCommand;
+	string FinalCommand;
+	srand(time(0));
+	int WaitTime=rand()%750+1;
+	for(int i=0; i<Times; i++)
+	{
+		string iString;
+		stringstream iToString;
+		iToString<<i;
+		iString=iToString.str();
+		if(FixChannel!=true)
+		{
+			int TempChannel=rand()%11+1;
+			stringstream TempChannelSS;
+			TempChannelSS<<TempChannel;
+			Channel=TempChannelSS.str();
+		}
+		if(FixBssid!=true)
+		{
+			int TempBssid1=rand()%10;
+			int TempBssid2=rand()%10;
+			stringstream TempBssidSS;
+			TempBssidSS<<BaseBssid<<TempBssid1<<TempBssid2;
+			Bssid=TempBssidSS.str();
+		}
+		if(FixEssid!=true)
+		{
+			int TempEssid=rand()%100000;
+			stringstream TempEssidSS;
+			TempEssidSS<<TempEssid;
+			Essid=TempEssidSS.str();
+		}
+		if(i==0)
+		{
+			BaseCommand="airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" ";
+			if(Security==true)
+			{
+				BaseCommand=BaseCommand+"-Z 2";
+			}
+			BaseCommand=BaseCommand+" mon0";
+			FinalCommand=BaseCommand;
+		}
+		else
+		{
+			FinalCommand=FinalCommand+" & SleepnRun-x64 \"airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" ";
+			if(Security==true)
+			{
+				FinalCommand=FinalCommand+" -Z 2";
+			}
+			FinalCommand=FinalCommand+" mon0\" "+iString;
+		}
+		usleep(WaitTime);
+	}
+	//FinalCommand=FinalCommand+" >> SpammerModReal.log";
+	cout<<"Final command: "<<FinalCommand<<endl;
+	system(FinalCommand.c_str());
 	return 0;
 }
