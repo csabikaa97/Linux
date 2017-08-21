@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 	string SourceFilename=argv[1];
-	if(SourceFilename=="*")
+	/*if(SourceFilename=="*")
 	{
 		cout<<"All cpp file install mode detected."<<endl;
 		cout<<"Installing these files: "<<endl;
@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 		{
 			return 0;
 		}
-	}
+	}*/
 	//cout<<endl<<"Sourcefilename: "<<SourceFilename;
 	//cout<<endl<<"Sourcefilename.length(): "<<SourceFilename.length();
 	string Filename;
