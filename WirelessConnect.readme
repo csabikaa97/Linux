@@ -1,7 +1,0 @@
-A simple executable that takes two arguments and runs wpa_supplicant with a configuration file on a wireless interface.
-After the wpa_supplicant connecting is over the program will ping google.com to make sure that the computer has internet
-connection.
-
-Architectures: x86, x64, arm
-
-Source code: WirelessConnect.cpp

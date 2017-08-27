@@ -1,5 +1,0 @@
-This program takes an int as argument and writes it to the file: /sys/class/backlight/acpi_video0/brightness
-
-Source: SetBrightness.cpp
-
-Architecture: x86, x64, arm

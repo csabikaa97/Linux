@@ -1,5 +1,0 @@
-This program takes an executable name or pat has a single argument, and installs it "system wide" in your Android device. This program requires root to work.
-
-Source: InstallSystemWideAndroid.cpp
-
-Architecture: x86, arm32

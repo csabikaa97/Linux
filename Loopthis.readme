@@ -1,6 +1,0 @@
-This program takes any command as argument, and runs(loops) it every second. 
-Please use " " if you have a space in your command, as it will separate it into two.
-
-Source code: Loopthis.cpp
-
-Architecture: x86, x64, arm

@@ -1,0 +1,51 @@
+InstallSystemWide:
+	1:	This program takes one argument as file path and puts it into the folder /usr/local/bin so it can be runned
+		from any folder. 
+
+	2:	This program is the same as above but this one takes a cpp file as argument and compiles it before putting it
+		to the /usr/local/bin folder.
+		
+		Source: InstallSystemWide.cpp(1) and InstallSystemWideCpp.cpp(2)
+
+Loopthis:
+		This program takes any command as argument, and runs(loops) it every second. 
+		Please use " " if you have a space in your command, as it will separate it into two.
+
+		Source code: Loopthis.cpp
+
+Math:
+		Simple math functions described in a little program for some calculations in shell.
+
+		Source code: Math.cpp
+
+SleepnRun:
+		The program takes two arguments and then runs the first argument as a command in the shell 
+		<second argument> seconds after SleepnRun is runned.
+
+		Source code: SleepnRun.cpp
+	
+Spammer:
+		Wireless station beacon spammer program that uses aircrack-ng and SleepnRun executables. It is a bit like mdk3.
+	
+		Source code: Spammer.cpp
+
+		Arguments:
+			s		-	Enable WPA2 psk security
+			b <mac>		-	Enable custom MAC for all networks
+			e <essid>	-	Enable custom ESSID for all networks
+			c <number>	-	Broadcast networks on one channel
+
+			(If different arguments are not
+			present, values will be generated 
+			randomly for every integer possible.)	
+
+		Requirements:
+			-airbase-ng program from aircrack-ng binary
+			-SleepnRun
+WirelessConnect:
+		A simple executable that takes two arguments and runs wpa_supplicant with a configuration file on a wireless 
+		interface. After the wpa_supplicant connecting is over the program will ping google.com to make sure that the 
+		computer has internet connection.
+
+		Source code: WirelessConnect.cpp
+

@@ -1,6 +1,0 @@
-This program is just for lazy people to make git cloning easier. This program takes two arguments to run.
-First argument is the username for git, and the second one is for the repository name.
-
-Source: Gitpull.cpp
-
-Architecture: x86, arm

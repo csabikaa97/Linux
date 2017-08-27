@@ -1,6 +1,0 @@
-A program that takes two arguments and runs the first argument as a shell command as many times as described in the second 
-argument.
-
-Architecture: x86, x64, arm
-
-Source code: LoopthisThismanytimes.cpp
