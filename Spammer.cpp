@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			FinalCommand=FinalCommand+" & SleepnRun-x64 \"airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" ";
+			FinalCommand=FinalCommand+" & SleepnRun \"airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" ";
 			if(Security==true)
 			{
 				FinalCommand=FinalCommand+" -Z 2";
