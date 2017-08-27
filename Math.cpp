@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 		string szam1s=argv[1];
 		string szam2s=argv[3];
 		string muvelet=argv[2];
-		if(muvelet=="x" || muvelet=="/" || muvelet=="+" || muvelet=="-")
+		if(muvelet=="x" || muvelet=="/" || muvelet=="+" || muvelet=="-" || muvelet=="*")
 		{
 			int szam1i=atoi(szam1s.c_str());
 			float szam1=szam1i;
@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 				case 'x':	cout<<szam1*szam2; break;
 				case '+':	cout<<szam1+szam2; break;
 				case '-':	cout<<szam1-szam2; break;
+				case '*':	cout<<szam1*szam2; break;
 			}
 			cout<<endl;
 		}
