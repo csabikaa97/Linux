@@ -22,6 +22,8 @@ int main(int argc, char* argv[])
 	int Times=10;
 	char CharBuffer;
 	bool Security=false;
+	bool FixEssidBase=false;
+	string FixEssidbase;
 	string buffer;
 	for(int i=0; i<argc; i++)
 	{
@@ -50,6 +52,9 @@ int main(int argc, char* argv[])
 				Times=atoi(TimesS.c_str());
 				cout<<"Times: "<<Times<<endl;
 				break;
+			case 'l':
+				FixEssidBase=true;
+				FixEssidbase=argv[i+1];
 			case 's':
 				Security=true;
 				break;
@@ -87,10 +92,14 @@ int main(int argc, char* argv[])
 			stringstream TempEssidSS;
 			TempEssidSS<<TempEssid;
 			Essid=TempEssidSS.str();
+			if(FixEssidBase==true)
+			{
+				Essid=FixEssidbase+"-"+TempEssidSS.str();
+			}
 		}
 		if(i==0)
 		{
-			BaseCommand="airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" ";
+			BaseCommand="airbase-ng -c "+Channel+" -e \""+Essid+"\" -a "+Bssid+" ";
 			if(Security==true)
 			{
 				BaseCommand=BaseCommand+"-Z 2";
