@@ -9,8 +9,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	string BaseBssid="00:0C:87:69:69:";
-
-	cout<<"Argc: "<<argc<<endl;
+	//cout<<"argc: "<<argc<<endl;
 	bool FixChannel=false;
 	string Channel;
 	bool FixEssid=false;
@@ -25,8 +24,10 @@ int main(int argc, char* argv[])
 	bool FixEssidBase=false;
 	string FixEssidbase;
 	string buffer;
-	for(int i=0; i<argc; i++)
+	cout<<"Argument initialization start..."<<endl<<endl;
+	for(int i=1; i<argc; i++)
 	{
+		cout<<"Argument: \""<<argv[i]<<"\""<<endl;
 		buffer=argv[i];
 		CharBuffer=buffer[0];
 		switch(CharBuffer)
@@ -34,33 +35,42 @@ int main(int argc, char* argv[])
 			case 'c':
 				FixChannel=true;
 				Channel=argv[i+1];
-				cout<<"Channel: "<<Channel<<endl;
+				cout<<"\tChannel: "<<Channel<<endl;
+				i++;
 				break;
 			case 'e':
 				FixEssid=true;
 				Essid=argv[i+1];
-				cout<<"Essid: "<<Essid<<endl;
+				cout<<"\tEssid: \""<<Essid<<"\""<<endl;
+				i++;
 				break;
 			case 'b':
 				FixBssid=true;
 				Bssid=argv[i+1];
-				cout<<"Bssid: "<<Bssid<<endl;
+				cout<<"\tBssid: "<<Bssid<<endl;
+				i++;
 				break;
 			case 't':
 				FixTimes=true;
 				TimesS=argv[i+1];
 				Times=atoi(TimesS.c_str());
-				cout<<"Times: "<<Times<<endl;
+				cout<<"\tTimes: "<<Times<<endl;
+				i++;
 				break;
 			case 'l':
 				FixEssidBase=true;
 				FixEssidbase=argv[i+1];
-			case 's':
-				Security=true;
+				cout<<"\tESSID base: \""<<FixEssidbase<<"\""<<endl;
+				i++;
 				break;
 		}
+		if(buffer[0]=='s' && Security!=true)
+		{
+			cout<<"\tSecurity: true"<<endl;
+			Security=true;
+		}
 	}
-	cout<<endl<<"Argument initialization done!"<<endl;
+	cout<<endl<<"Argument initialization done!"<<endl<<endl;
 	string BaseCommand;
 	string FinalCommand;
 	srand(time(0));
@@ -109,7 +119,7 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			FinalCommand=FinalCommand+" & SleepnRun \"airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" ";
+			FinalCommand=FinalCommand+" & SleepnRun \"airbase-ng -c "+Channel+" -e \\\""+Essid+"\\\" -a "+Bssid+" ";
 			if(Security==true)
 			{
 				FinalCommand=FinalCommand+" -Z 2";
@@ -119,7 +129,7 @@ int main(int argc, char* argv[])
 		usleep(WaitTime);
 	}
 	//FinalCommand=FinalCommand+" >> SpammerModReal.log";
-	cout<<"Final command: "<<FinalCommand<<endl;
+	//cout<<"Final command: "<<FinalCommand<<endl;
 	system(FinalCommand.c_str());
 	return 0;
 }
