@@ -24,6 +24,13 @@ int main(int argc, char* argv[])
 	bool FixEssidBase=false;
 	string FixEssidbase;
 	string buffer;
+	string buffer2;
+	bool FixCharacters=false;
+	string Fixcharacters;
+	bool FileBasedEssid=false;
+	string FileName;
+	int counter2=0;
+	srand(time(0));
 	cout<<"Argument initialization start..."<<endl<<endl;
 	for(int i=1; i<argc; i++)
 	{
@@ -44,6 +51,12 @@ int main(int argc, char* argv[])
 				cout<<"\tEssid: \""<<Essid<<"\""<<endl;
 				i++;
 				break;
+			case 'p':
+				FixCharacters=true;
+				Fixcharacters=argv[i+1];
+				cout<<"Prefix characters: \""<<Fixcharacters<<"\""<<endl;
+				i++;
+				break;
 			case 'b':
 				FixBssid=true;
 				Bssid=argv[i+1];
@@ -62,6 +75,11 @@ int main(int argc, char* argv[])
 				FixEssidbase=argv[i+1];
 				cout<<"\tESSID base: \""<<FixEssidbase<<"\""<<endl;
 				i++;
+				break;
+			case 'f':
+				FileBasedEssid=true;
+				FileName=argv[i+1];
+				cout<<"ESSID File name: "<<FileName<<endl;
 				break;
 		}
 		if(buffer[0]=='s' && Security!=true)
@@ -98,13 +116,61 @@ int main(int argc, char* argv[])
 		}
 		if(FixEssid!=true)
 		{
-			int TempEssid=rand()%100000;
-			stringstream TempEssidSS;
-			TempEssidSS<<TempEssid;
-			Essid=TempEssidSS.str();
 			if(FixEssidBase==true)
 			{
+				int TempEssid=rand()%1000000;
+				stringstream TempEssidSS;
+				TempEssidSS.str("");
+				TempEssidSS<<TempEssid;
 				Essid=FixEssidbase+"-"+TempEssidSS.str();
+				cout<<"Essid: "<<Essid<<endl;
+			}
+			if(FixCharacters==true)
+			{
+				Essid="\0";
+				buffer2=Fixcharacters;
+				bool FREE[Fixcharacters.length()];
+				for(int c=0; c<Fixcharacters.length(); c++)
+				{
+					FREE[c]=true;
+				}
+				for(int b=0; b<Fixcharacters.length(); b++)
+				{
+					while(true)
+					{
+						int buffer4=Fixcharacters.length()-b;
+						int buffer3=rand()%buffer4;
+						if(FREE[buffer3]==true)
+						{
+							Essid=Essid+buffer2[buffer3];
+							break;
+						}
+					}
+				}
+				cout<<"Essid: "<<Essid<<endl;
+			}
+			if(FileBasedEssid==true)
+			{
+				int counter1=0;
+				string buffer5;
+				fstream EssidFile;
+				EssidFile.open(FileName.c_str());
+				while(getline(EssidFile,buffer5))
+				{
+					if(counter1==counter2)
+					{
+						Essid=buffer5;
+						if(buffer5=="")
+						{
+							counter2=0;
+						}
+						break;
+					}
+					counter1++;
+				}
+				counter2++;
+				cout<<"File Essid["<<counter2<<"]: "<<buffer5<<endl;
+				Essid=buffer5;
 			}
 		}
 		if(i==0)
@@ -112,9 +178,9 @@ int main(int argc, char* argv[])
 			BaseCommand="airbase-ng -c "+Channel+" -e \""+Essid+"\" -a "+Bssid+" ";
 			if(Security==true)
 			{
-				BaseCommand=BaseCommand+"-Z 2";
+				BaseCommand=BaseCommand+"-Z 2 ";
 			}
-			BaseCommand=BaseCommand+" mon0";
+			BaseCommand=BaseCommand+"mon0";
 			FinalCommand=BaseCommand;
 		}
 		else
@@ -122,14 +188,15 @@ int main(int argc, char* argv[])
 			FinalCommand=FinalCommand+" & SleepnRun \"airbase-ng -c "+Channel+" -e \\\""+Essid+"\\\" -a "+Bssid+" ";
 			if(Security==true)
 			{
-				FinalCommand=FinalCommand+" -Z 2";
+				FinalCommand=FinalCommand+"-Z 2 ";
 			}
-			FinalCommand=FinalCommand+" mon0\" "+iString;
+			else
+			FinalCommand=FinalCommand+"mon0\" "+iString;
 		}
 		usleep(WaitTime);
 	}
 	//FinalCommand=FinalCommand+" >> SpammerModReal.log";
-	//cout<<"Final command: "<<FinalCommand<<endl;
+	cout<<"Final command: "<<FinalCommand<<endl;
 	system(FinalCommand.c_str());
 	return 0;
 }
