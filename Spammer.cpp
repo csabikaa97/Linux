@@ -336,7 +336,6 @@ int main(int argc, char* argv[])
 			{
 				FinalCommand=FinalCommand+"-Z 2 ";
 			}
-			else
 			FinalCommand=FinalCommand+"mon0\" "+iString;
 		}
 		usleep(WaitTime);
@@ -344,7 +343,7 @@ int main(int argc, char* argv[])
 	cout<<endl<<"Generating ESSID names done."<<endl;
 	cout<<endl<<"Running airbase-ng..."<<endl;
 	//FinalCommand=FinalCommand+" >> SpammerModReal.log";
-	//cout<<"Final command: "<<FinalCommand<<endl;
+	cout<<"Final command: "<<FinalCommand<<endl;
 	system(FinalCommand.c_str());
 	return 0;
 }
