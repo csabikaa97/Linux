@@ -343,7 +343,14 @@ int main(int argc, char* argv[])
 	cout<<endl<<"Generating ESSID names done."<<endl;
 	cout<<endl<<"Running airbase-ng..."<<endl;
 	//FinalCommand=FinalCommand+" >> SpammerModReal.log";
-	cout<<"Final command: "<<FinalCommand<<endl;
+	//cout<<"Final command: "<<FinalCommand<<endl;
 	system(FinalCommand.c_str());
+	cout<<endl<<"Closing programs..."<<endl;
+	system("killall SleepnRun");
+	system("killall airbase-ng");
+	cout<<endl<<"########################################################################"<<endl;
+	cout<<"Thanks for using Spammer. http://github.com/csabikaa97"<<endl;
+	cout<<"########################################################################"<<endl;
+	sleep(1);
 	return 0;
 }
