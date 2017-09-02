@@ -214,6 +214,8 @@ int main(int argc, char* argv[])
 			system("airmon-ng check kill");
 			string commando="airmon-ng start "+Interface;
 			system(commando.c_str());
+			string buffer9="rm "+Interface+"check";
+			system(buffer9.c_str());
 		}
 		else
 		{
