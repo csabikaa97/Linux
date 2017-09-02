@@ -211,6 +211,7 @@ int main(int argc, char* argv[])
 				return 0;
 			}
 			cout<<endl<<"Running airmon-ng on interface \""<<Interface<<"\"."<<endl;
+			system("airmon-ng check kill");
 			string commando="airmon-ng start "+Interface;
 			system(commando.c_str());
 		}
