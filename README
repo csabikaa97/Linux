@@ -26,6 +26,9 @@ SleepnRun:
 	
 Spammer:
 		Wireless station beacon spammer program that uses aircrack-ng and SleepnRun executables. It is a bit like mdk3.
+		The program has several checks for any action the program does to prevent errors and provide program
+		stability. In fact the program is capable of running by itself without any arguments or any human
+		input. 
 	
 		Source code: Spammer.cpp
 
