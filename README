@@ -1,16 +1,26 @@
 InstallSystemWideCpp:
 		This program a cpp file as argument and installs it on the system.
 		
+		Usage: InstallSystemWideCpp <cpp file here>
+		
 		Source: InstallSystemWideCpp.cpp
 
 Loopthis:
 		This program takes any command as argument, and runs(loops) it every second. 
 		Please use " " if you have a space in your command, as it will separate it into two.
+		
+		Usage: Loopthis <command to run>
+		
+		(it is recommended to put commands in "" to prevent any errors from occuring)
 
 		Source code: Loopthis.cpp
 
 Math:
 		Simple math functions described in a little program for some calculations in shell.
+
+		Usage: 	Math <any simple math function>
+			Math 4 x 2
+			Math 16 / 623
 
 		Source code: Math.cpp
 
@@ -18,17 +28,22 @@ SleepnRun:
 		The program takes two arguments and then runs the first argument as a command in 
 		the shell <second argument> seconds after the program is runned.
 
+		Usage: 	SleepnRun <command> <seconds to wait before running command>
+			SleepnRun poweroff 12
+
 		Source code: SleepnRun.cpp
 	
 Spammer:
 		Wireless station beacon spammer program that uses aircrack-ng and SleepnRun executables.
 		It is a bit like mdk3. The program has several checks for any action the program does to 
 		prevent errors and provide program stability. In fact the program is capable of running 
-		by itself without any arguments or any humaninput. 
+		by itself without any arguments or any human input. 
 		
 		Source code: Spammer.cpp
 
 		Arguments:
+			t <number>	-	Define how many wifi networks you want
+						(Maximum is 30)
 			s		-	Enable WPA2 psk security
 			b <mac>		-	Enable custom MAC for all networks
 			e <essid>	-	Enable custom ESSID for all networks
@@ -55,6 +70,11 @@ Spammer:
 			(If different arguments are not
 			present, values will be generated 
 			randomly for every integer possible.)	
+		
+		Usage:	Spammer t 12 l "C.I.A secret line" c 6
+			Spammer t 3 c 2
+			Spammer t 30 l "Matt is gay"
+				(Don't do that though, that would be rude...)
 
 		Requirements:
 			-airbase-ng program from aircrack-ng binary
