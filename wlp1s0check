@@ -1,2 +1,0 @@
-lrwxrwxrwx 1 root root 0 Sep  2 22:27 /sys/class/net/wlp1s0 -> ../../devices/pci0000:00/0000:00:1c.1/0000:01:00.0/net/wlp1s0
-lrwxrwxrwx 1 root root 0 Sep  2 22:27 /sys/class/net/wlp1s0 -> ../../devices/pci0000:00/0000:00:1c.1/0000:01:00.0/net/wlp1s0
