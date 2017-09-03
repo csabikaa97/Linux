@@ -109,7 +109,16 @@ int main(int argc, char* argv[])
 				FixTimes=true;
 				TimesS=argv[i+1];
 				Times=atoi (TimesS.c_str());
-				cout<<"\tTimes: "<<Times<<endl;
+				cout<<"\tTimes: ";
+				if(Times>30)
+				{
+					cout<<"reduced to 30 because original number ("<<Times<<") is higher than maximum.";
+					Times=30;
+				}
+				else
+				{
+					cout<<Times<<endl;
+				}
 				i++;
 				break;
 			case 'l':
