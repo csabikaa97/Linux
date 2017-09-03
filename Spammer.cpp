@@ -348,6 +348,7 @@ int main(int argc, char* argv[])
 	cout<<endl<<"Closing programs..."<<endl;
 	system("killall SleepnRun");
 	system("killall airbase-ng");
+	system("airmon-ng stop mon0");
 	cout<<endl<<"########################################################################"<<endl;
 	cout<<"Thanks for using Spammer. http://github.com/csabikaa97"<<endl;
 	cout<<"########################################################################"<<endl;
