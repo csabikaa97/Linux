@@ -225,6 +225,36 @@ int main(int argc, char* argv[])
 	}
 	//cout<<endl<<"buffer7: "<<buffer07<<endl;
 	system("rm mon0type");
+	string buffer10="more /sys/class/net/"+Interface+"/type >> "+Interface+"type";
+	system(buffer10.c_str());
+	fstream interfacetype;
+	string buffer15=Interface+"type";
+	interfacetype.open(buffer15.c_str());
+	if(interfacetype.is_open())
+	{
+		string buffer11;
+		getline(interfacetype,buffer11);
+		string buffer12=Interface+"type";
+		if(buffer11=="1")
+		{
+			cout<<endl<<Interface<<" is not in monitor mode.\nChanging it..."<<endl;
+			string buffer13="iwconfig "+Interface+" mode monitor";
+			system(buffer13.c_str());
+		}
+		else
+		{
+			if(buffer11=="803")
+			{
+				cout<<endl<<Interface<<" is in monitor mode."<<endl;
+			}
+		}
+	}
+	else
+	{
+		cout<<endl<<"The interface type couldn't be determined."<<endl<<"Problems might occur while running the program."<<endl;
+	}
+	string buffer14="rm "+Interface+"type";
+	system(buffer14.c_str());
 	cout<<endl<<"Checking wireless devices done."<<endl;
 	string BaseCommand;
 	string FinalCommand;
@@ -349,9 +379,9 @@ int main(int argc, char* argv[])
 	system("killall SleepnRun");
 	system("killall airbase-ng");
 	system("airmon-ng stop mon0");
-	cout<<endl<<"########################################################################"<<endl;
-	cout<<"Thanks for using Spammer. http://github.com/csabikaa97"<<endl;
-	cout<<"########################################################################"<<endl;
+	cout<<endl<<"#######################################################"<<endl;
+	cout<<"Thanks for using Spammer. http://github.com/csabikaa97/"<<endl;
+	cout<<"#######################################################"<<endl;
 	sleep(1);
 	return 0;
 }
