@@ -46,10 +46,11 @@ Spammer:
 						the same names as old ones.
 						--(Will be ignored is ESSID is already set)
 			i <interface>		Set a default wireless interface that will be used if mon0
-						is not started yet. If not set the program will try to detect
-						common wireless interfaces on the system (wlp1s0, wlan0).
+						is not started yet. If not set the program will try to 
+						detect common wireless interfaces on the system (wlp1s0,
+						wlan0).
 						--(If the system has wlan0 or wlp1s0 interface then this
-						argument is unnecessary.)
+						argument is unnecessary)
 
 			(If different arguments are not
 			present, values will be generated 
