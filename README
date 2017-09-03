@@ -1,11 +1,7 @@
-InstallSystemWide:
-	1:	This program takes one argument as file path and puts it into the folder /usr/local/bin so it can be runned
-		from any folder. 
-
-	2:	This program is the same as above but this one takes a cpp file as argument and compiles it before putting it
-		to the /usr/local/bin folder.
+InstallSystemWideCpp:
+		This program a cpp file as argument and installs it on the system.
 		
-		Source: InstallSystemWide.cpp(1) and InstallSystemWideCpp.cpp(2)
+		Source: InstallSystemWideCpp.cpp
 
 Loopthis:
 		This program takes any command as argument, and runs(loops) it every second. 
@@ -19,17 +15,17 @@ Math:
 		Source code: Math.cpp
 
 SleepnRun:
-		The program takes two arguments and then runs the first argument as a command in the shell 
-		<second argument> seconds after SleepnRun is runned.
+		The program takes two arguments and then runs the first argument as a command in 
+		the shell <second argument> seconds after the program is runned.
 
 		Source code: SleepnRun.cpp
 	
 Spammer:
-		Wireless station beacon spammer program that uses aircrack-ng and SleepnRun executables. It is a bit like mdk3.
-		The program has several checks for any action the program does to prevent errors and provide program
-		stability. In fact the program is capable of running by itself without any arguments or any human
-		input. 
-	
+		Wireless station beacon spammer program that uses aircrack-ng and SleepnRun executables.
+		It is a bit like mdk3. The program has several checks for any action the program does to 
+		prevent errors and provide program stability. In fact the program is capable of running 
+		by itself without any arguments or any humaninput. 
+		
 		Source code: Spammer.cpp
 
 		Arguments:
@@ -63,9 +59,11 @@ Spammer:
 			-airbase-ng program from aircrack-ng binary
 			-SleepnRun
 WirelessConnect:
-		A simple executable that takes two arguments and runs wpa_supplicant with a configuration file on a wireless 
-		interface. After the wpa_supplicant connecting is over the program will ping google.com to make sure that the 
-		computer has internet connection.
-
+		A simple executable that takes two arguments and runs wpa_supplicant with a configuration 
+		file on a wireless interface. After the wpa_supplicant connecting is over the program will
+		ping google.com to make sure that the computer has internet connection.
+		
+		Usage: WirelessConnect <interface name> <configuration file>
+	
 		Source code: WirelessConnect.cpp
 
