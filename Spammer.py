@@ -77,21 +77,25 @@ print("Starting generation...")
 for i in range(1,Times):
 	if Channel == "NULL":
 		Channel=str(randint(1,11))
-	if not Filepath == "NULL":
-		try:
-			Essidlistfile=open(str(Filepath))
-		except IOError:
-			print("Can't open list file.")
-			sys.exit()
-		EssidlistfileString=Essidlistfile.read()
-	if not Essidbase == "NULL":
-		Essid=Essidbase+"-"+str(randint(1,9999999))
-		
+	if Essid == "NULL":
+		if not Filepath == "NULL":
+			try:
+				Essidlistfile=open(str(Filepath))
+			except IOError:
+				print("Can't open list file.")
+				sys.exit()
+			EssidlistfileString=Essidlistfile.read()
+		if not Essidbase == "NULL":
+			Essid=Essidbase+"-"+str(randint(1,9999999))
+		if not Precharacters == "NULL":
+			for i in range(1,len(Precharacters)):
+				Essid=Essid+
 	if i == 1:
 		Basecommand="airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" mon0"
 		print("Basecommand: "+Basecommand)
+	else:
 print("Generation done.")
-print("Running script...")
+print("Running script(s)...")
 
 print("Closing program...")
 os.system("killall SleepnRun")
