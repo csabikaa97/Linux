@@ -74,7 +74,7 @@ else:
 	sys.exit()
 print("Checking wireless devices done.")
 print("Starting generation...")
-for i in range(Times):
+for i in range(1,Times):
 	if Channel == "NULL":
 		Channel=str(randint(1,11))
 	if not Filepath == "NULL":
@@ -86,6 +86,10 @@ for i in range(Times):
 		EssidlistfileString=Essidlistfile.read()
 	if not Essidbase == "NULL":
 		Essid=Essidbase+"-"+str(randint(1,9999999))
+		
+	if i == 1:
+		Basecommand="airbase-ng -c "+Channel+" -e "+Essid+" -a "+Bssid+" mon0"
+		print("Basecommand: "+Basecommand)
 print("Generation done.")
 print("Running script...")
 
