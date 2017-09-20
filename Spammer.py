@@ -53,14 +53,14 @@ if not Interface == "NULL":
 		return 0
 	print("Interface "+Interface+" is up.")
 	try:
-		InterfaceFile=open("/sys/class/net/mon0/type")
+		InterfaceFile=open("/sys/class/net/mon0/type","r")
 	except IOError:
 		print("mon0 interface is not up")
 		print("Starting airmon-ng")
 		os.system("airmon-ng check kill")
 		os.system("airmon-ng start "+str(Interface))
 	try:
-		InterfaceFile=open("/sys/class/net/"+Interface"+/type")
+		InterfaceFile=open("/sys/class/net/"+Interface"+/type","r")
 		if InterfaceFile.read() == "803":
 			print("Interface "+Interface+" is in monitor mode.")
 		else:
