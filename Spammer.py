@@ -60,7 +60,7 @@ if not Interface == "NULL":
 		os.system("airmon-ng check kill")
 		os.system("airmon-ng start "+str(Interface))
 	try:
-		InterfaceFile=open("/sys/class/net/"+Interface"+/type","r")
+		InterfaceFile=open("/sys/class/net/"+Interface+"/type","r")
 		if InterfaceFile.read() == "803":
 			print("Interface "+Interface+" is in monitor mode.")
 		else:
