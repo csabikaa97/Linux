@@ -1,5 +1,6 @@
 import os
 import sys
+from random import randint
 Channel="NULL"
 Interface="NULL"
 Essid="NULL"
@@ -64,7 +65,7 @@ if not Interface == "NULL":
 		if InterfaceFile.read() == "803":
 			print("Interface "+Interface+" is in monitor mode.")
 		else:
-			print("Interface "+Interface+"is not in monitor mode. Changing it...")
+			print("Interface "+Interface+" is not in monitor mode. Changing it...")
 			os.system("iwconfig "+Interface+" mode monitor")
 	except IOError:
 		sys.exit()
@@ -72,3 +73,23 @@ else:
 	print("Unknown interface. Exiting...")
 	sys.exit()
 print("Checking wireless devices done.")
+print("Starting generation...")
+for i in range(Times):
+	if Channel == "NULL":
+		Channel=str(randint(1,11))
+	if not Filepath == "NULL":
+		try:
+			Essidlistfile=open(str(Filepath))
+		except IOError:
+			print("Can't open list file.")
+			sys.exit()
+		EssidlistfileString=Essidlistfile.read()
+	if not Essidbase == "NULL":
+		Essid=Essidbase+"-"str(randint(1,9999999))
+print("Generation done.")
+print("Running script...")
+
+print("Closing program...")
+os.system("killall SleepnRun")
+os.system("killall airbase-ng")
+print("Thanks for using Spammer :D")
