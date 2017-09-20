@@ -85,7 +85,7 @@ for i in range(Times):
 			sys.exit()
 		EssidlistfileString=Essidlistfile.read()
 	if not Essidbase == "NULL":
-		Essid=Essidbase+"-"str(randint(1,9999999))
+		Essid=Essidbase+"-"+str(randint(1,9999999))
 print("Generation done.")
 print("Running script...")
 
