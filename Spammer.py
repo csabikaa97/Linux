@@ -14,7 +14,7 @@ while i<len(sys.argv):
 	print("argv["+str(i)+"]: "+sys.argv[i])
 	if sys.argv[i]=="c":
 		Channel=sys.argv[i+1]
-		print("Found channel :"+Channel)
+		print("Found channel: "+Channel)
 		i=i+1
 	if sys.argv[i]=="i":
 		Interface=sys.argv[i+1]
@@ -68,4 +68,7 @@ if not Interface == "NULL":
 			os.system("iwconfig "+Interface+" mode monitor")
 	except IOError:
 		sys.exit()
+else:
+	print("Unknown interface. Exiting...")
+	sys.exit()
 print("Checking wireless devices done.")
