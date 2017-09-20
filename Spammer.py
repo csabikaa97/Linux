@@ -50,7 +50,7 @@ if not Interface == "NULL":
 		InterfaceFile=open("/sys/class/net/"+str(Interface)+"/type","r")
 	except IOError:
 		print("Interface "+Interface+" is not available.")
-		return 0
+		sys.exit()
 	print("Interface "+Interface+" is up.")
 	try:
 		InterfaceFile=open("/sys/class/net/mon0/type","r")
@@ -67,5 +67,5 @@ if not Interface == "NULL":
 			print("Interface "+Interface+"is not in monitor mode. Changing it...")
 			os.system("iwconfig "+Interface+" mode monitor")
 	except IOError:
-		return 0
+		sys.exit()
 print("Checking wireless devices done.")
