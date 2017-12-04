@@ -8,7 +8,6 @@ int main()
 	while(true)
 	{
 		counter++;
-		//sample: "https://ncore.cc/torrents.php?action=download&id=2058977&key=86fb59a05081d47a692ecef6a31888a1"
 		string token="86fb59a05081d47a692ecef6a31888a1";
 		string base="https://ncore.cc/torrents.php?action=download&id=";
 		string id="";
