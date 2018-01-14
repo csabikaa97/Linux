@@ -16,7 +16,7 @@ int main() {
 	cout<<endl<<"Allow ADB device for connection!";
 	cout<<endl<<"Starting ADB in TCP/IP mode...";
 	system("adb tcpip 5555");
-	system("adb install wifinject.apk");
+	system("adb install app-debug.apk");
 	cout<<endl<<"WiFI SSID: ";
 	string ssid;
 	cin>>ssid;
