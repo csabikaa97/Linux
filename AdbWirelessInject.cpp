@@ -1,8 +1,20 @@
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <unistd.h>
 using namespace std;
-int main() {
+string ssid;
+string password;
+string security;
+int main(int argc, char* argv[]) {
+	if(argc!=1) {
+		ssid=argv[1];
+		cout<<"SSID: "<<argv[1]<<endl;
+		password=argv[2];
+		cout<<"Password: "<<argv[2]<<endl;
+		security=argv[3];
+		cout<<"Security: "<<security<<endl;
+	}
 	fstream adbexistcheck;
 	cout<<"Killing old ADB processes...";
 	system("killall adb");
@@ -14,21 +26,24 @@ int main() {
 	cout<<"Plug in your Android device with ADB turned on.";
 	system("adb wait-for-device");
 	cout<<endl<<"Allow ADB device for connection!";
-	cout<<endl<<"Starting ADB in TCP/IP mode...";
+	cout<<endl<<"Starting ADB in TCP/IP mode..."<<endl;
 	system("adb tcpip 5555");
+	system("adb wait-for-device");
 	system("adb install app-debug.apk");
-	cout<<endl<<"WiFI SSID: ";
-	string ssid;
-	cin>>ssid;
-	cout<<endl<<"Security mode? ( WPA | WEP ): ";
-	string security;
-	cin>>security;
-	string password;
-	if(security=="WPA") {
-		cout<<endl<<"Password: ";
-		cin>>password;
+	if(ssid=="\0") {
+		cout<<endl<<"WiFI SSID: ";
+		cin>>ssid;
+		cout<<endl<<"Security mode? ( WPA | WEP ): ";
+		cin>>security;
+		if(security=="WPA") {
+			cout<<endl<<"Password: ";
+			cin>>password;
+		}
 	}
 	string command1="adb shell am start -n com.steinwurf.adbjoinwifi/.MainActivity -e ssid "+ssid+" -e password_type "+security+" -e password "+password;
 	system(command1.c_str());
+	usleep(20000);
+	system("adb uninstall com.steinwurf.adbjoinwifi");
+	system("adb shell ifconfig wlan0");
 	return 0;
 }
