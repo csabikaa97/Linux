@@ -23,18 +23,32 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			cout<<endl<<"Configuration file successfully opened."<<endl;
+			cout<<endl<<"Configuration file successfully opened.\n\n";
 		}
+		string interfacenamefull="/sys/class/net/"+interface+"/type";
+		fstream interfacecheck;
+		string command99="chmod 777 "+interfacenamefull;
+		system(command99.c_str());
+		interfacecheck.open(interfacenamefull.c_str());
+		if(!interfacecheck.is_open()) {
+			cout<<"Specified interface ("<<interface<<") can't be opened.\n";
+			return 0;
+		}
+		cout<<"Setting interface "<<interface<<" up.\n\n";
 		string command1="sudo ifconfig "+interface+" up";
 		system(command1.c_str());
 		string command2="wpa_supplicant -D wext -B -i "+interface+" -c "+configfile;
+		cout<<"Running \""<<command2<<"\"...\n\n";
 		system(command2.c_str());
+		cout<<"Getting IP address...\n\n";
 		system("dhclient");
 		cout<<endl;
+		cout<<"Reading IP address from ifconfig...";
+		cout<<endl;
 		system("ifconfig | grep \"inet addr\"");
-		cout<<endl;
+		cout<<endl<<"Running ping on google.com..."<<endl;
 		system("ping google.com -c 1");
-		cout<<endl;
+		cout<<"\""<<endl;
 		cout<<endl;
 	}
 	else
