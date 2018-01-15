@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
 		else {
 			cout<<endl<<"\tConfiguration file successfully opened.\n\n";
 		}
+		cfgfile.close();
 		string interfacenamefull="/sys/class/net/"+interface+"/type";
 		fstream interfacecheck;
 		string command99="chmod 777 "+interfacenamefull;
@@ -25,6 +26,7 @@ int main(int argc, char *argv[]) {
 			cout<<"\tSpecified interface ("<<interface<<") can't be opened.\n";
 			return 0;
 		}
+		interfacecheck.close();
 		cout<<"Setting interface "<<interface<<" up.\n\n";
 		string command1="sudo ifconfig "+interface+" up";
 		system(command1.c_str());
