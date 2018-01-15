@@ -24,6 +24,14 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 	adbexistcheck.close();
+	fstream apkexistcheck;
+	apkexistcheck.open("app-debug.apk");
+	if(!apkexistcheck.is_open()) {
+		cout<<"Apk file can't be opened."<<endl;
+		return 0;
+	}
+	apkexistcheck.close();
+	system("adb start-server");
 	cout<<"Plug in your Android device with ADB turned on."<<endl;
 	system("adb wait-for-device");
 	cout<<endl<<"Starting ADB in TCP/IP mode..."<<endl;
