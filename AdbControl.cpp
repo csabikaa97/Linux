@@ -1,10 +1,19 @@
 #include <iostream>
 #include <curses.h>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 int main() {
+    fstream adbfilecheck;
+    adbfilecheck.open("/usr/bin/adb");
+    if(!adbfilecheck.is_open()) {
+        printw("Couldn't open ADB.");
+	refresh();
+	endwin();
+	return 0;
+    }
     initscr();
-    
+    move(5,0);
     printw("P - Power");
     move(6,0);
     printw("H - Home");
@@ -26,13 +35,16 @@ int main() {
     printw("Shift + S - shell");
     refresh();
     while(true) {
-        char input = getch();
-        move(0,0);
-        printw("Input: %c",input);
-        if(input=='Q') {
+	move(0,0);
+        printw("Input: ");
+	int input = getch();
+        if(input==81) {
             endwin();
             return 0;
         }
+	switch(input) {
+
+	}
         refresh();
     }
 }
