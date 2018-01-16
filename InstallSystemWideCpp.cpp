@@ -5,9 +5,15 @@ using namespace std;
 int main(int argc, char* argv[]) {
 	bool Found=false;
 	int counter2=0;
+	string option="\0";
 	if(argc!=2) {
-		cout<<"Too few arguments passed."<<endl;
-		return 0;
+		if(argc>2) {
+			option=argv[2];
+		}
+		else {
+			cout<<"Too few arguments passed."<<endl;
+			return 0;
+		}
 	}
 	string SourceFilename=argv[1];
 	string Filename;
@@ -35,6 +41,9 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 	string Command1="sudo g++ "+SourceFilename+" -o "+Filename;
+	if(option!="\0") {
+		Command1=Command1+" "+option;
+	}
 	system(Command1.c_str());
 	fstream CompiledFile;
 	CompiledFile.open(Filename.c_str());
