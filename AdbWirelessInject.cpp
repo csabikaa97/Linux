@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 	string command1="adb shell am start -n com.steinwurf.adbjoinwifi/.MainActivity -e ssid "+ssid+" -e password_type "+security+" -e password "+password;
 	system(command1.c_str());
 	cout<<"Waiting for device to finish joining the network..."<<endl;
-	usleep(5000000);
+	usleep(8000000);
 	cout<<"Uninstalling app..."<<endl;
 	system("adb uninstall com.steinwurf.adbjoinwifi");
 	cout<<"Reading device IP from ifconfig..."<<endl;
