@@ -48,8 +48,12 @@ bool IsNumber(char a) {
 		return false;
 	}
 }
-bool IsCharacter(char a) {
-	
+bool DoesThisContaintAnyOfThis(char a, string b) {
+	for(int i=0; i<b.length(); i++) {
+		if(a==b[i]) {
+			return true;
+	}
+	return false;
 }
 int StringToInt(string a) {
 	for(int i=0; i<a.length(); i++) {
