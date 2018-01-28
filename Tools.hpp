@@ -3,6 +3,25 @@
 #include <sstream>
 #include <string>
 using namespace std;
+string RemoveString(string original, string removable) {
+	int counter=0;
+	int counter7=0;
+	for(int i=0; i<original.length(); i++) {
+		if(original[i]==removable[0]) {
+			for(int c=0; c<removable.length(); c++) {
+				if(counter==removable.length()) {
+				}
+				if(original[c]==removable[c]) {
+					counter++;
+				}
+				else {
+					counter=0;
+				}
+			}
+		}
+	}
+	return original+"XDD";
+}
 void PrintStringNcurses(string a) {
 	for(int i=0; i<a.length(); i++) {
 		printw("%c",a[i]);
@@ -28,6 +47,9 @@ bool IsNumber(char a) {
 	else {
 		return false;
 	}
+}
+bool IsCharacter(char a) {
+	
 }
 int StringToInt(string a) {
 	for(int i=0; i<a.length(); i++) {

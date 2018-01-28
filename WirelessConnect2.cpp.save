@@ -8,7 +8,6 @@ int main() {
 	initscr();
 	string interface;
 	fstream WCinterface;
-	//opening preference file
 	WCinterface.open("/etc/WirelessConnect.pref");
 	if(!WCinterface.is_open()) {
 		move(0,0);
@@ -17,7 +16,6 @@ int main() {
 		printw("Create new preference file? (Y/N): ");
 		refresh();
 		if(char c=getch()=='y' or c=='Y') {
-			//making new preference file
 			system("touch /etc/WirelessConnect.pref");
 			WCinterface.open("/etc/WirelessConnect.pref");
 			move(3,0);
@@ -54,11 +52,10 @@ int main() {
 		getline(WCinterface,interface);
 		WCinterface.close();
 	}
-	//checking interface
 	string makeinterfaceonline="ifconfig "+interface+" up";
 	system(makeinterfaceonline.c_str());
 	clear();
-	move(1,1);
+	move(1,30);
 	printw("interface: ");
 	PrintStringNcurses(interface);
 	system("rm /tmp/iw.scan");
@@ -72,11 +69,9 @@ int main() {
 		endwin();
 		return 0;
 	}
-	//running program main part
 	else {
 		int counter=0;
 		string iwscans[100];
-		//reading file contents into variables
 		for(int i=0; i<100; i++) {
 			string buffer;
 			getline(iw,buffer);
@@ -89,34 +84,21 @@ int main() {
 			}
 		}
 		int current=0;
-		//outputting file content;
 		while(true) {
 			int counter2=0;
 			for(int i=0; i<counter; i++) {
 				move(i+2,0);
-				string temp;
-				for(int cec=0; cec<iwscans[i].length(); cec++) {
-					if(iwscans[i][cec]!=' ' or iwscans[i][cec]!='\t') {
-						temp=temp+iwscans[i][cec];
-					}
-				}
-				for(int cec=0; cec<temp.length(); cec++) {
-					if(temp[cec]=='S' && temp[cec+1]=='S' && temp[cec+2]=='I' && temp[cec+3]=='D' && temp[cec+4]==':' ) {
-						for(int cec2=0; cec2<5; cec2++) {
-							temp[cec+cec2]='\0';
-						}
-					}
-				}
 				if(current==i) {
-					printw("*");
+					printw("  *");
 				}
 				else {
-					printw(" ");
+					printw("   ");
 				}
-				PrintStringNcurses(temp);
-				if(temp=="\tSzp-link 2") {
-					printw("hi ,otherdsa");
+				//analyze iwscans current row for SSID: string piece
+				for(int c=0; c<iwscans[i]; c++) {
+					
 				}
+				PrintStringNcurses(iwscans[i]);
 				counter2=i;
 			}
 			refresh();
@@ -126,7 +108,6 @@ int main() {
 			int b = getch();
 			printw("         -         %d",b);
 			switch(b) {
-				case 10:
 				case 66:
 					if(current!=counter2)
 						current++;
