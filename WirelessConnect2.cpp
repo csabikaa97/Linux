@@ -92,11 +92,17 @@ int main() {
 		//outputting file content;
 		while(true) {
 			int counter2=0;
+			string formattediwnames[counter];
 			for(int i=0; i<counter; i++) {
 				move(i+2,0);
 				string temp;
+				int counter321=0;
 				for(int cec=0; cec<iwscans[i].length(); cec++) {
-					if(iwscans[i][cec]!=' ' or iwscans[i][cec]!='\t') {
+					if(counter321==0 && iwscans[i][cec]==' ') {
+						cec++;
+						counter321++;
+					}
+					if(DoesThisContaintAnyOfThis(iwscans[i][cec],"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,*-_\\\"\'<>.: ")) {
 						temp=temp+iwscans[i][cec];
 					}
 				}
@@ -108,25 +114,31 @@ int main() {
 					}
 				}
 				if(current==i) {
-					printw("*");
+					printw("*\t\"");
 				}
 				else {
-					printw(" ");
+					printw(" \t\"");
 				}
 				PrintStringNcurses(temp);
-				if(temp=="\tSzp-link 2") {
-					printw("hi ,otherdsa");
-				}
+				formattediwnames[i]=temp;
+				printw("\"");
 				counter2=i;
 			}
 			refresh();
-			move(counter2+3,0);
+			move(counter2+6,0);
+			printw("Press enter to connect to a network.");
+			move(counter2+4,0);
 			printw("input: ");
 			refresh();
 			int b = getch();
-			printw("         -         %d",b);
 			switch(b) {
 				case 10:
+					move(counter2+8,0);
+					printw("running command: \"");
+					string command="
+					//make comand get passwordsa nad stuff
+					PrintStringNcurses(
+					break;
 				case 66:
 					if(current!=counter2)
 						current++;

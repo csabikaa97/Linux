@@ -52,6 +52,7 @@ bool DoesThisContaintAnyOfThis(char a, string b) {
 	for(int i=0; i<b.length(); i++) {
 		if(a==b[i]) {
 			return true;
+		}
 	}
 	return false;
 }
