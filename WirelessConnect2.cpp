@@ -134,10 +134,26 @@ int main() {
 			switch(b) {
 				case 10:
 					move(counter2+8,0);
-					printw("running command: \"");
-					string command="
-					//make comand get passwordsa nad stuff
-					PrintStringNcurses(
+					printw("Enter password for network(\"");
+					PrintStringNcurses(formattediwnames[current]);
+					printw("\"): ");
+					refresh();
+					string command1="wpa_passphrase >> "+formattediwnames[current]+".cfg";
+					system(command1.c_str());
+					string filename="formattediwnames[current]+".cfg";
+					fstream file;
+					file.open(filename.c_str());
+					if(!file.is_open()) {
+						printw("Couldn't open configuration file.");
+						refresh();
+						getch();
+						endwin();
+						return 0;
+					}
+					else {
+						printw("Save successful.");
+						getch();
+					}
 					break;
 				case 66:
 					if(current!=counter2)
