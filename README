@@ -1,3 +1,7 @@
+AdbWirelessInject:
+		Usage: AdbWirelessInject <SSID> <Password> <"WPA" or "WEP">
+		
+		Source: AdbWirelessInject.cpp
 InstallSystemWideCpp:
 		This program a cpp file as argument and installs it on the system.
 		
